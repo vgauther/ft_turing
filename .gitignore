@@ -1,0 +1,4 @@
+*.cmx
+*.cmi
+*.o
+ft_turing
