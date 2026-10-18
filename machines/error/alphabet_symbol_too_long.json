@@ -1,0 +1,9 @@
+{
+    "name": "alphabet_symbol_too_long",
+    "alphabet": ["00", "."],
+    "blank": ".",
+    "states": ["start", "HALT"],
+    "initial": "start",
+    "finals": ["HALT"],
+    "transitions": {}
+}

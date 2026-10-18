@@ -1,0 +1,9 @@
+{
+    "name": "alphabet_not_list",
+    "alphabet": "0.",
+    "blank": ".",
+    "states": ["start", "HALT"],
+    "initial": "start",
+    "finals": ["HALT"],
+    "transitions": {}
+}

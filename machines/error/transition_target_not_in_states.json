@@ -1,0 +1,18 @@
+{
+    "name": "transition_target_not_in_states",
+    "alphabet": ["0", "."],
+    "blank": ".",
+    "states": ["start", "HALT"],
+    "initial": "start",
+    "finals": ["HALT"],
+    "transitions": {
+        "start": [
+            {
+                "read": "0",
+                "to_state": "ghost",
+                "write": "0",
+                "action": "RIGHT"
+            }
+        ]
+    }
+}

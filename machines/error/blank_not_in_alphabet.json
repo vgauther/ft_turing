@@ -1,0 +1,18 @@
+{
+    "name": "blank_not_in_alphabet",
+    "alphabet": ["0", "."],
+    "blank": "_",
+    "states": ["start", "HALT"],
+    "initial": "start",
+    "finals": ["HALT"],
+    "transitions": {
+        "start": [
+            {
+                "read": "0",
+                "to_state": "HALT",
+                "write": "0",
+                "action": "RIGHT"
+            }
+        ]
+    }
+}

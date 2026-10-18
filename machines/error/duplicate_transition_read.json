@@ -1,0 +1,24 @@
+{
+    "name": "duplicate_transition_read",
+    "alphabet": ["0", "."],
+    "blank": ".",
+    "states": ["start", "HALT"],
+    "initial": "start",
+    "finals": ["HALT"],
+    "transitions": {
+        "start": [
+            {
+                "read": "0",
+                "to_state": "HALT",
+                "write": "0",
+                "action": "RIGHT"
+            },
+            {
+                "read": "0",
+                "to_state": "start",
+                "write": ".",
+                "action": "LEFT"
+            }
+        ]
+    }
+}

@@ -1,0 +1,18 @@
+{
+    "name": "initial_not_in_states",
+    "alphabet": ["0", "."],
+    "blank": ".",
+    "states": ["start", "HALT"],
+    "initial": "missing_state",
+    "finals": ["HALT"],
+    "transitions": {
+        "start": [
+            {
+                "read": "0",
+                "to_state": "HALT",
+                "write": "0",
+                "action": "RIGHT"
+            }
+        ]
+    }
+}

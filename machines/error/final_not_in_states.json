@@ -1,0 +1,9 @@
+{
+    "name": "final_not_in_states",
+    "alphabet": ["0", "."],
+    "blank": ".",
+    "states": ["start", "HALT"],
+    "initial": "start",
+    "finals": ["missing_state"],
+    "transitions": {}
+}

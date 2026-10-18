@@ -1,0 +1,8 @@
+{
+    "name": "missing_transitions",
+    "alphabet": ["0", "."],
+    "blank": ".",
+    "states": ["start", "HALT"],
+    "initial": "start",
+    "finals": ["HALT"]
+}

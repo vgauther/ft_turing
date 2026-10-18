@@ -1,0 +1,10 @@
+{
+    "name": "unknown_machine_field",
+    "description": "This field is not part of the expected schema",
+    "alphabet": ["0", "."],
+    "blank": ".",
+    "states": ["start", "HALT"],
+    "initial": "start",
+    "finals": ["HALT"],
+    "transitions": {}
+}

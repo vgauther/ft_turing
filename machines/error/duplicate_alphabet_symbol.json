@@ -1,0 +1,9 @@
+{
+    "name": "duplicate_alphabet_symbol",
+    "alphabet": ["0", ".", "0"],
+    "blank": ".",
+    "states": ["start", "HALT"],
+    "initial": "start",
+    "finals": ["HALT"],
+    "transitions": {}
+}
