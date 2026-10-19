@@ -3,6 +3,23 @@
 Ce projet charge la description JSON d'une machine de Turing, verifie sa
 coherence, puis affiche ses proprietes et ses transitions.
 
+## Compilation
+
+Le projet peut etre compile en code natif avec `ocamlopt` ou en bytecode avec
+`ocamlc`. Par defaut, `make` utilise `ocamlopt` lorsqu'il est disponible et se
+replie automatiquement sur `ocamlc` dans le cas contraire.
+
+```bash
+make          # Utilise ocamlopt, puis ocamlc comme solution de repli.
+make native   # Impose la compilation native avec ocamlopt.
+make byte     # Impose la compilation bytecode avec ocamlc.
+```
+
+Dans les trois cas, l'executable final est cree sous le nom `ft_turing`. Les
+fichiers intermediaires sont separes dans `build/native/` et `build/byte/` afin
+d'eviter de melanger les deux modes de compilation. Ils ne sont recompiles que
+lorsqu'un fichier source a ete modifie.
+
 ## Exemple commente : `unary_sub`
 
 La machine `unary_sub`, fournie dans le sujet, realise une soustraction en

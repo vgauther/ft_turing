@@ -1,0 +1,328 @@
+{
+    "name": "palindrome",
+    "alphabet": [
+        "0",
+        "1",
+        ".",
+        "X",
+        "Y",
+        "y",
+        "n"
+    ],
+    "blank": ".",
+    "states": [
+        "validate_input",
+        "rewind_start",
+        "find_left",
+        "seek_end_0",
+        "seek_end_1",
+        "match_0",
+        "match_1",
+        "return_left",
+        "accept_seek_end",
+        "reject_seek_end",
+        "HALT"
+    ],
+    "initial": "validate_input",
+    "finals": [
+        "HALT"
+    ],
+    "transitions": {
+        "validate_input": [
+            {
+                "read": "0",
+                "to_state": "validate_input",
+                "write": "0",
+                "action": "RIGHT"
+            },
+            {
+                "read": "1",
+                "to_state": "validate_input",
+                "write": "1",
+                "action": "RIGHT"
+            },
+            {
+                "read": ".",
+                "to_state": "rewind_start",
+                "write": ".",
+                "action": "LEFT"
+            }
+        ],
+        "rewind_start": [
+            {
+                "read": "0",
+                "to_state": "rewind_start",
+                "write": "0",
+                "action": "LEFT"
+            },
+            {
+                "read": "1",
+                "to_state": "rewind_start",
+                "write": "1",
+                "action": "LEFT"
+            },
+            {
+                "read": ".",
+                "to_state": "find_left",
+                "write": ".",
+                "action": "RIGHT"
+            }
+        ],
+        "find_left": [
+            {
+                "read": "X",
+                "to_state": "find_left",
+                "write": "X",
+                "action": "RIGHT"
+            },
+            {
+                "read": "Y",
+                "to_state": "find_left",
+                "write": "Y",
+                "action": "RIGHT"
+            },
+            {
+                "read": "0",
+                "to_state": "seek_end_0",
+                "write": "X",
+                "action": "RIGHT"
+            },
+            {
+                "read": "1",
+                "to_state": "seek_end_1",
+                "write": "Y",
+                "action": "RIGHT"
+            },
+            {
+                "read": ".",
+                "to_state": "HALT",
+                "write": "y",
+                "action": "RIGHT"
+            }
+        ],
+        "seek_end_0": [
+            {
+                "read": "0",
+                "to_state": "seek_end_0",
+                "write": "0",
+                "action": "RIGHT"
+            },
+            {
+                "read": "1",
+                "to_state": "seek_end_0",
+                "write": "1",
+                "action": "RIGHT"
+            },
+            {
+                "read": "X",
+                "to_state": "seek_end_0",
+                "write": "X",
+                "action": "RIGHT"
+            },
+            {
+                "read": "Y",
+                "to_state": "seek_end_0",
+                "write": "Y",
+                "action": "RIGHT"
+            },
+            {
+                "read": ".",
+                "to_state": "match_0",
+                "write": ".",
+                "action": "LEFT"
+            }
+        ],
+        "seek_end_1": [
+            {
+                "read": "0",
+                "to_state": "seek_end_1",
+                "write": "0",
+                "action": "RIGHT"
+            },
+            {
+                "read": "1",
+                "to_state": "seek_end_1",
+                "write": "1",
+                "action": "RIGHT"
+            },
+            {
+                "read": "X",
+                "to_state": "seek_end_1",
+                "write": "X",
+                "action": "RIGHT"
+            },
+            {
+                "read": "Y",
+                "to_state": "seek_end_1",
+                "write": "Y",
+                "action": "RIGHT"
+            },
+            {
+                "read": ".",
+                "to_state": "match_1",
+                "write": ".",
+                "action": "LEFT"
+            }
+        ],
+        "match_0": [
+            {
+                "read": "X",
+                "to_state": "match_0",
+                "write": "X",
+                "action": "LEFT"
+            },
+            {
+                "read": "Y",
+                "to_state": "match_0",
+                "write": "Y",
+                "action": "LEFT"
+            },
+            {
+                "read": "0",
+                "to_state": "return_left",
+                "write": "X",
+                "action": "LEFT"
+            },
+            {
+                "read": "1",
+                "to_state": "reject_seek_end",
+                "write": "1",
+                "action": "RIGHT"
+            },
+            {
+                "read": ".",
+                "to_state": "accept_seek_end",
+                "write": ".",
+                "action": "RIGHT"
+            }
+        ],
+        "match_1": [
+            {
+                "read": "X",
+                "to_state": "match_1",
+                "write": "X",
+                "action": "LEFT"
+            },
+            {
+                "read": "Y",
+                "to_state": "match_1",
+                "write": "Y",
+                "action": "LEFT"
+            },
+            {
+                "read": "1",
+                "to_state": "return_left",
+                "write": "Y",
+                "action": "LEFT"
+            },
+            {
+                "read": "0",
+                "to_state": "reject_seek_end",
+                "write": "0",
+                "action": "RIGHT"
+            },
+            {
+                "read": ".",
+                "to_state": "accept_seek_end",
+                "write": ".",
+                "action": "RIGHT"
+            }
+        ],
+        "return_left": [
+            {
+                "read": "0",
+                "to_state": "return_left",
+                "write": "0",
+                "action": "LEFT"
+            },
+            {
+                "read": "1",
+                "to_state": "return_left",
+                "write": "1",
+                "action": "LEFT"
+            },
+            {
+                "read": "X",
+                "to_state": "return_left",
+                "write": "X",
+                "action": "LEFT"
+            },
+            {
+                "read": "Y",
+                "to_state": "return_left",
+                "write": "Y",
+                "action": "LEFT"
+            },
+            {
+                "read": ".",
+                "to_state": "find_left",
+                "write": ".",
+                "action": "RIGHT"
+            }
+        ],
+        "accept_seek_end": [
+            {
+                "read": "0",
+                "to_state": "accept_seek_end",
+                "write": "0",
+                "action": "RIGHT"
+            },
+            {
+                "read": "1",
+                "to_state": "accept_seek_end",
+                "write": "1",
+                "action": "RIGHT"
+            },
+            {
+                "read": "X",
+                "to_state": "accept_seek_end",
+                "write": "X",
+                "action": "RIGHT"
+            },
+            {
+                "read": "Y",
+                "to_state": "accept_seek_end",
+                "write": "Y",
+                "action": "RIGHT"
+            },
+            {
+                "read": ".",
+                "to_state": "HALT",
+                "write": "y",
+                "action": "RIGHT"
+            }
+        ],
+        "reject_seek_end": [
+            {
+                "read": "0",
+                "to_state": "reject_seek_end",
+                "write": "0",
+                "action": "RIGHT"
+            },
+            {
+                "read": "1",
+                "to_state": "reject_seek_end",
+                "write": "1",
+                "action": "RIGHT"
+            },
+            {
+                "read": "X",
+                "to_state": "reject_seek_end",
+                "write": "X",
+                "action": "RIGHT"
+            },
+            {
+                "read": "Y",
+                "to_state": "reject_seek_end",
+                "write": "Y",
+                "action": "RIGHT"
+            },
+            {
+                "read": ".",
+                "to_state": "HALT",
+                "write": "n",
+                "action": "RIGHT"
+            }
+        ]
+    }
+}

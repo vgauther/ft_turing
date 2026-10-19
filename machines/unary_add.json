@@ -8,65 +8,71 @@
     ],
     "blank": ".",
     "states": [
-        "scan_plus",
-        "take_one",
-        "go_left",
-        "erase_plus",
+        "scanright",
+        "scanleft",
+        "moveplus",
+        "eraseplus",
         "HALT"
     ],
-    "initial": "scan_plus",
+    "initial": "scanright",
     "finals": [
         "HALT"
     ],
     "transitions": {
-        "scan_plus": [
+        "scanright": [
             {
                 "read": "1",
-                "to_state": "scan_plus",
+                "to_state": "scanright",
                 "write": "1",
                 "action": "RIGHT"
             },
             {
                 "read": "+",
-                "to_state": "take_one",
+                "to_state": "scanright",
                 "write": "+",
                 "action": "RIGHT"
-            }
-        ],
-        "take_one": [
-            {
-                "read": "1",
-                "to_state": "go_left",
-                "write": ".",
-                "action": "LEFT"
             },
             {
                 "read": "=",
-                "to_state": "erase_plus",
+                "to_state": "scanleft",
                 "write": "=",
                 "action": "LEFT"
             }
         ],
-        "go_left": [
+        "scanleft": [
             {
                 "read": "1",
-                "to_state": "go_left",
+                "to_state": "scanleft",
                 "write": "1",
                 "action": "LEFT"
             },
             {
                 "read": "+",
-                "to_state": "scan_plus",
+                "to_state": "moveplus",
                 "write": "1",
                 "action": "RIGHT"
             }
         ],
-        "erase_plus": [
+        "moveplus": [
             {
-                "read": "+",
+                "read": "1",
+                "to_state": "scanright",
+                "write": "+",
+                "action": "RIGHT"
+            },
+            {
+                "read": "=",
+                "to_state": "eraseplus",
+                "write": ".",
+                "action": "LEFT"
+            }
+        ],
+        "eraseplus": [
+            {
+                "read": "1",
                 "to_state": "HALT",
                 "write": ".",
-                "action": "RIGHT"
+                "action": "LEFT"
             }
         ]
     }

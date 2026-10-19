@@ -1,0 +1,259 @@
+{
+    "name": "0n1n",
+    "alphabet": [
+        "0",
+        "1",
+        ".",
+        "X",
+        "Y",
+        "y",
+        "n"
+    ],
+    "blank": ".",
+    "states": [
+        "validate_start",
+        "validate_zeros",
+        "validate_ones",
+        "rewind_start",
+        "find_zero",
+        "find_one",
+        "return_left",
+        "verify_ones",
+        "reject_seek_end",
+        "HALT"
+    ],
+    "initial": "validate_start",
+    "finals": [
+        "HALT"
+    ],
+    "transitions": {
+        "validate_start": [
+            {
+                "read": "0",
+                "to_state": "validate_zeros",
+                "write": "0",
+                "action": "RIGHT"
+            },
+            {
+                "read": "1",
+                "to_state": "validate_ones",
+                "write": "1",
+                "action": "RIGHT"
+            },
+            {
+                "read": ".",
+                "to_state": "HALT",
+                "write": "n",
+                "action": "RIGHT"
+            }
+        ],
+        "validate_zeros": [
+            {
+                "read": "0",
+                "to_state": "validate_zeros",
+                "write": "0",
+                "action": "RIGHT"
+            },
+            {
+                "read": "1",
+                "to_state": "validate_ones",
+                "write": "1",
+                "action": "RIGHT"
+            },
+            {
+                "read": ".",
+                "to_state": "rewind_start",
+                "write": ".",
+                "action": "LEFT"
+            }
+        ],
+        "validate_ones": [
+            {
+                "read": "1",
+                "to_state": "validate_ones",
+                "write": "1",
+                "action": "RIGHT"
+            },
+            {
+                "read": "0",
+                "to_state": "reject_seek_end",
+                "write": "0",
+                "action": "RIGHT"
+            },
+            {
+                "read": ".",
+                "to_state": "rewind_start",
+                "write": ".",
+                "action": "LEFT"
+            }
+        ],
+        "rewind_start": [
+            {
+                "read": "0",
+                "to_state": "rewind_start",
+                "write": "0",
+                "action": "LEFT"
+            },
+            {
+                "read": "1",
+                "to_state": "rewind_start",
+                "write": "1",
+                "action": "LEFT"
+            },
+            {
+                "read": ".",
+                "to_state": "find_zero",
+                "write": ".",
+                "action": "RIGHT"
+            }
+        ],
+        "find_zero": [
+            {
+                "read": "X",
+                "to_state": "find_zero",
+                "write": "X",
+                "action": "RIGHT"
+            },
+            {
+                "read": "0",
+                "to_state": "find_one",
+                "write": "X",
+                "action": "RIGHT"
+            },
+            {
+                "read": "Y",
+                "to_state": "verify_ones",
+                "write": "Y",
+                "action": "RIGHT"
+            },
+            {
+                "read": "1",
+                "to_state": "reject_seek_end",
+                "write": "1",
+                "action": "RIGHT"
+            },
+            {
+                "read": ".",
+                "to_state": "HALT",
+                "write": "n",
+                "action": "RIGHT"
+            }
+        ],
+        "find_one": [
+            {
+                "read": "0",
+                "to_state": "find_one",
+                "write": "0",
+                "action": "RIGHT"
+            },
+            {
+                "read": "Y",
+                "to_state": "find_one",
+                "write": "Y",
+                "action": "RIGHT"
+            },
+            {
+                "read": "1",
+                "to_state": "return_left",
+                "write": "Y",
+                "action": "LEFT"
+            },
+            {
+                "read": ".",
+                "to_state": "HALT",
+                "write": "n",
+                "action": "RIGHT"
+            }
+        ],
+        "return_left": [
+            {
+                "read": "0",
+                "to_state": "return_left",
+                "write": "0",
+                "action": "LEFT"
+            },
+            {
+                "read": "1",
+                "to_state": "return_left",
+                "write": "1",
+                "action": "LEFT"
+            },
+            {
+                "read": "X",
+                "to_state": "return_left",
+                "write": "X",
+                "action": "LEFT"
+            },
+            {
+                "read": "Y",
+                "to_state": "return_left",
+                "write": "Y",
+                "action": "LEFT"
+            },
+            {
+                "read": ".",
+                "to_state": "find_zero",
+                "write": ".",
+                "action": "RIGHT"
+            }
+        ],
+        "verify_ones": [
+            {
+                "read": "Y",
+                "to_state": "verify_ones",
+                "write": "Y",
+                "action": "RIGHT"
+            },
+            {
+                "read": "0",
+                "to_state": "reject_seek_end",
+                "write": "0",
+                "action": "RIGHT"
+            },
+            {
+                "read": "1",
+                "to_state": "reject_seek_end",
+                "write": "1",
+                "action": "RIGHT"
+            },
+            {
+                "read": ".",
+                "to_state": "HALT",
+                "write": "y",
+                "action": "RIGHT"
+            }
+        ],
+        "reject_seek_end": [
+            {
+                "read": "0",
+                "to_state": "reject_seek_end",
+                "write": "0",
+                "action": "RIGHT"
+            },
+            {
+                "read": "1",
+                "to_state": "reject_seek_end",
+                "write": "1",
+                "action": "RIGHT"
+            },
+            {
+                "read": "X",
+                "to_state": "reject_seek_end",
+                "write": "X",
+                "action": "RIGHT"
+            },
+            {
+                "read": "Y",
+                "to_state": "reject_seek_end",
+                "write": "Y",
+                "action": "RIGHT"
+            },
+            {
+                "read": ".",
+                "to_state": "HALT",
+                "write": "n",
+                "action": "RIGHT"
+            }
+        ]
+    }
+}
